@@ -1,0 +1,113 @@
+<!-- product-details-area-start -->
+<div class="tp-product-details-area pt-130 pb-130">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__wrapper mb-0">
+          <div class="tp-shop-details__tab-content-box mb-20">
+            <div class="tab-content">
+              <div class="tp-shop-details__tab-big-img oneimg">
+                <img src="{{ product.images.first | img_url: 'master' }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__right-warp">
+          <h3 class="tp-shop-details__title-sm">{{ product.title }}</h3>
+          <div class="tp-shop-details__price">
+            <span>{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+
+            <!--
+              <del>$32.00</del>
+              <span class="red-color">-34%</span>
+            -->
+          </div>
+          <div class="tp-shop-details__text-2">
+            <p>{{ product.description }}</p>
+          </div>
+          <form
+            method="post"
+            action="/cart/add"
+            id="{{ 'product-form-' | append: section.id }}"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            data-type="add-to-cart-form"
+          >
+            <div class="tp-shop-details__product-info">
+              <ul>
+                <li class="themelist">
+                  <span>Upload Image: </span>
+                  <div>
+                    <input
+                      type="file"
+                      form="{{ 'product-form-' | append: section.id }}"
+                      name="properties[CustomizeImage]"
+                      required
+                    >
+                    <!--
+                      <DIV id="dropzone">
+                        <FORM class="dropzone needsclick" id="demo-upload" action="/upload">
+                          <DIV class="dz-message needsclick"> Drop files here or click to upload. </DIV>
+                          <input
+                            style="display:"
+                            type="file"
+                            form="{{ 'product-form-' | append: section.id }}"
+                            name="properties[Customize Image]"
+                          >
+                        </FORM>
+                      </DIV>
+                    -->
+                  </div>
+                </li>
+                <li class="themelist" style="align-items: self-start;">
+                  <span>Your Custom Text: </span>
+                  <div class="my" style="width: 100%;">
+                    <div class="tp-contact-4__textarea-box">
+                      <textarea
+                        placeholder="Enter your Massage*"
+                        maxlength="90"
+                        form="{{ 'product-form-' | append: section.id }}"
+                        name="properties[Customize Text]"
+                        style="
+                          height: max-content;
+                          line-height: 20px;
+                          padding-left: 5px;
+                          padding: 8px;
+                        "
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="tp-shop-details__quantity-wrap mt-30 d-flex align-items-center">
+              <div class="tp-shop-details__quantity-box">
+                <div class="tp-shop-details__quantity">
+                  <div class="tp-cart-minus"><i class="fal fa-minus"></i></div>
+                  <input type="text" name="quantity" value="1">
+                  <div class="tp-cart-plus"><i class="fal fa-plus"></i></div>
+                </div>
+              </div>
+              <div class="tp-shop-details__btn ml-30 shopbtn">
+                <input name="id" value="{{ product.variants.first.id }}" type="hidden">
+                <input class="tp-btn-square" name="add" value="Add To Cart" type="submit">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- product-details-area-end -->
+{% schema %}
+{
+  "name": "Section name",
+  "settings": []
+}
+{% endschema %}

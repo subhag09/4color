@@ -1,0 +1,41 @@
+a{% assign test_metaobjects = shop.metaobjects['test'] %}
+{% for test in test_metaobjects %}
+  <div>
+    <h3>{{ test.test.name }}</h3>
+    <p>Email: {{ test.test.email }}</p>
+    <p>Product: {{ test.test.product }}</p>
+  </div>
+{% endfor %}
+
+<form id="metaobject-form">
+  <input type="text" name="test.name" placeholder="Name" required><br>
+  <input type="email" name="test.email" placeholder="Email" required><br>
+  <input type="text" name="test.product" placeholder="Product" required><br>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('metaobject-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = {
+      type: 'test',
+      handle: 'unique-handle-' + Date.now(),
+      fields: []
+    };
+
+    formData.forEach((value, key) => {
+      data.fields.push({ key, value });
+    });
+
+    const response = await fetch('http://localhost:3000/create-metaobject', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    console.log(result);
+  });
+</script>

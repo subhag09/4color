@@ -1,0 +1,134 @@
+<div class="tp-testimonial-5__area tp-testimonial-5__space grey-bg-2 testi">
+  <div class="container custom-container-4">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="tp-testimonial-2__wrapper p-relative">
+          <div class="swiper-container tp-testimonial-2__active-2">
+            <div class="swiper-wrapper">
+              {% assign blocks = section.blocks | where: 'type', 'testimonial' %}
+              {% for block in blocks %}
+                {% assign star_number = block.settings.star | plus: 1 %}
+                <div class="swiper-slide">
+                  <div class="tp-testimonial-5__item p-relative">
+                    <div class="tp-testimonial-5__content p-relative">
+                      <div class="tp-testimonial-5__star">
+                        {% for i in (1..5) %}
+                          {% if i < star_number %}
+                            <i class="fa-solid fa-star"></i>
+                          {% else %}
+                            <i class="fa-solid fa-star color"></i>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                      <p>{{ block.settings.quote }}</p>
+                      <div class="tp-testimonial-5__shape-1">
+                        <span>
+                          <svg
+                            width="45"
+                            height="30"
+                            viewBox="0 0 45 30"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                                d="M22.5 30L0.416353 2.38419e-07L44.5836 2.38419e-07L22.5 30Z"
+                                fill="white" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="tp-testimonial-5__author-box d-flex align-items-center">
+                      <div class="tp-testimonial-5__thumb">
+                        <img src="{{ block.settings.testifier-img | img_url: 'master' }}" alt="">
+                      </div>
+                      <div class="tp-testimonial-5__author-info">
+                        <h5 class="tp-testimonial-5__title-sm">{{ block.settings.name }}</h5>
+                        <span>{{ block.settings.designation }}</span>
+                      </div>
+                      <div class="tp-testimonial-5__quot-box">
+                        <span>
+                          <svg
+                            width="28"
+                            height="21"
+                            viewBox="0 0 28 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                                d="M9.51562 0C4.24154 0 0 4.37034 0 9.80506V20.7742H11.2V9.31257H4.9V8.26043C4.9 7.02296 6.63839 5.01446 8.575 5.01446H11.2V0H9.51562ZM26.3156 0C21.0415 0 16.8 4.37034 16.8 9.80506V20.7742H28V9.31257H21.7V8.26043C21.7 7.02296 23.4384 5.01446 25.375 5.01446H28V0H26.3156Z"
+                                fill="white" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="tp-testimonial-5__arrow">
+            <div class="test-prev">
+              <button class="active">
+                <svg
+                  width="21"
+                  height="13"
+                  viewBox="0 0 21 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M20.7301 6.13004L16.5461 1.12105C16.48 1.03326 16.3944 0.962019 16.2961 0.912964C16.1978 0.863908 16.0894 0.838379 15.9796 0.838379C15.8697 0.838379 15.7613 0.863908 15.663 0.912964C15.5647 0.962019 15.4791 1.03326 15.4131 1.12105C15.2611 1.31552 15.1786 1.55524 15.1786 1.80205C15.1786 2.04886 15.2611 2.28857 15.4131 2.48305L18.2221 5.84604H1.26408C1.03966 5.88839 0.837078 6.0078 0.691331 6.18362C0.545583 6.35945 0.46582 6.58066 0.46582 6.80904C0.46582 7.03742 0.545583 7.25864 0.691331 7.43446C0.837078 7.61029 1.03966 7.7297 1.26408 7.77205H18.2241L15.4151 11.14C15.2631 11.3345 15.1806 11.5742 15.1806 11.821C15.1806 12.0679 15.2631 12.3076 15.4151 12.502C15.4811 12.5898 15.5667 12.6611 15.665 12.7101C15.7633 12.7592 15.8717 12.7847 15.9816 12.7847C16.0914 12.7847 16.1998 12.7592 16.2981 12.7101C16.3964 12.6611 16.482 12.5898 16.5481 12.502L20.7321 7.49304C20.8838 7.29819 20.9661 7.05818 20.9657 6.8112C20.9654 6.56422 20.8824 6.32444 20.7301 6.13004Z"
+                      fill="#245757" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testimonial Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "designation",
+        },
+        {
+          "type": "image_picker",
+          "id": "testifier-img",
+          "label": "Testifier Image",
+        },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Tesimonial",
+        },
+        {
+          "type": "number",
+          "id": "star",
+          "label": "Star Rating",
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Section"
+    }
+  ]
+}
+{% endschema %}

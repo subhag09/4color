@@ -1,0 +1,301 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "home_banner_3UPWHT": {
+      "type": "home-banner",
+      "blocks": {
+        "banner_image_Xq4nk9": {
+          "type": "bannerImage",
+          "settings": {
+            "ban-img": "shopify://shop_images/slider-5-1.png"
+          }
+        },
+        "banner_image_Kwwgef": {
+          "type": "bannerImage",
+          "settings": {
+            "ban-img": "shopify://shop_images/slider-5-2.png"
+          }
+        },
+        "banner_image_BGXkMp": {
+          "type": "bannerImage",
+          "settings": {
+            "ban-img": "shopify://shop_images/slider-5-3.png"
+          }
+        },
+        "banner_image_kYJhxW": {
+          "type": "bannerImage",
+          "settings": {
+            "ban-img": "shopify://shop_images/slider-5-4.png"
+          }
+        },
+        "banner_image_rW46GP": {
+          "type": "bannerImage",
+          "settings": {
+            "ban-img": "shopify://shop_images/slider-5-5.png"
+          }
+        }
+      },
+      "block_order": [
+        "banner_image_Xq4nk9",
+        "banner_image_Kwwgef",
+        "banner_image_BGXkMp",
+        "banner_image_kYJhxW",
+        "banner_image_rW46GP"
+      ],
+      "settings": {
+        "title": "Custom Brochure Printing",
+        "heading": "Create Amazing Print & Design",
+        "text": "Beautiful, customizable template, with a ton of web blocks to create an amazing website that looks",
+        "pricing": "$ 237.08 / <del>$1723</del>",
+        "button-text": "Go Shop Now",
+        "button-link": "/collections/all"
+      }
+    },
+    "feature_tnrnii": {
+      "type": "feature",
+      "blocks": {
+        "feature_dFTBnP": {
+          "type": "feature",
+          "settings": {
+            "feture-icon": "shopify://shop_images/svgviewer-png-output.png",
+            "feature-heading": "Free Shipping",
+            "feature-text": "Free Shipping"
+          }
+        },
+        "feature_dChPTU": {
+          "type": "feature",
+          "settings": {
+            "feture-icon": "shopify://shop_images/svgviewer-png-output_1.png",
+            "feature-heading": "Payment Secure",
+            "feature-text": "Got 100% Payment Safe"
+          }
+        },
+        "feature_ipxiJe": {
+          "type": "feature",
+          "settings": {
+            "feture-icon": "shopify://shop_images/svgviewer-png-output_2.png",
+            "feature-heading": "Support 24/7",
+            "feature-text": "quality 24/7 Support"
+          }
+        },
+        "feature_tCjJzR": {
+          "type": "feature",
+          "settings": {
+            "feture-icon": "shopify://shop_images/svgviewer-png-output_3.png",
+            "feature-heading": "100% Money Back",
+            "feature-text": "Cutomers Money Back"
+          }
+        },
+        "feature_PcUJeM": {
+          "type": "feature",
+          "settings": {
+            "feture-icon": "shopify://shop_images/svgviewer-png-output_4.png",
+            "feature-heading": "Quality Products",
+            "feature-text": "We Insure Product Qua"
+          }
+        }
+      },
+      "block_order": [
+        "feature_dFTBnP",
+        "feature_dChPTU",
+        "feature_ipxiJe",
+        "feature_tCjJzR",
+        "feature_PcUJeM"
+      ],
+      "settings": {}
+    },
+    "home_about_section_chtEWR": {
+      "type": "home-about-section",
+      "blocks": {
+        "services_WPRdQL": {
+          "type": "services",
+          "settings": {
+            "ser-icon": "shopify://shop_images/about-icon1.png",
+            "ser-heading": "Banners Printing",
+            "ser-text": "services resource potentialities awesome services you."
+          }
+        },
+        "services_tAjmTi": {
+          "type": "services",
+          "settings": {
+            "ser-icon": "shopify://shop_images/about-icon2.png",
+            "ser-heading": "Banners Printing",
+            "ser-text": "services resource potentialities awesome services you."
+          }
+        },
+        "service2_qCfpWj": {
+          "type": "service2",
+          "settings": {
+            "service": "Large paper &amp; stock selection &amp; Unique Print"
+          }
+        },
+        "service2_4piw93": {
+          "type": "service2",
+          "settings": {
+            "service": "Large paper &amp; stock selection &amp; Unique Print"
+          }
+        }
+      },
+      "block_order": [
+        "services_WPRdQL",
+        "services_tAjmTi",
+        "service2_qCfpWj",
+        "service2_4piw93"
+      ],
+      "settings": {
+        "title": "ABOUT PRINTING SERVICES",
+        "heading": "Produce Stuning <span>Printing</span>",
+        "text": "Fast print, flyer, and pamphlet printing organization pleased with past Printing for what’s to come. What’s more, we do printing.",
+        "image-one": "shopify://shop_images/about1.png",
+        "image-two": "shopify://shop_images/about-2.png",
+        "image-three": "shopify://shop_images/about-3.png"
+      }
+    },
+    "home_product_eeJAJC": {
+      "type": "home-product",
+      "blocks": {
+        "product_C8eAJh": {
+          "type": "product",
+          "settings": {
+            "product": "3-calendar-gift-box-set-with-customizable-message",
+            "product-image": "shopify://shop_images/cal1.png"
+          }
+        },
+        "product_jtD6ya": {
+          "type": "product",
+          "settings": {
+            "product": "totebag-with-customizable-image-and-message",
+            "product-image": "shopify://shop_images/bag2.png"
+          }
+        },
+        "product_3ajfgm": {
+          "type": "product",
+          "settings": {
+            "product": "labour-law-poster",
+            "product-image": "shopify://shop_images/poster.png"
+          }
+        },
+        "product_VTjUKn": {
+          "type": "product",
+          "settings": {
+            "product": "individually-wrapped-customized-desktop-calendars",
+            "product-image": "shopify://shop_images/cal2.png"
+          }
+        }
+      },
+      "block_order": [
+        "product_C8eAJh",
+        "product_jtD6ya",
+        "product_3ajfgm",
+        "product_VTjUKn"
+      ],
+      "settings": {
+        "product-one": "3-calendar-gift-box-set-with-customizable-message",
+        "product-image-one": "shopify://shop_images/cal1.png",
+        "product-two": "totebag-with-customizable-image-and-message",
+        "product-image-two": "shopify://shop_images/bag2.png",
+        "product-three": "labour-law-poster",
+        "product-image-three": "shopify://shop_images/poster.png",
+        "product-four": "individually-wrapped-customized-desktop-calendars",
+        "product-image-four": "shopify://shop_images/cal2.png"
+      }
+    },
+    "testimonial_trVkhE": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_CQzQF4": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Michael Slater",
+            "designation": "CEO Company",
+            "testifier-img": "shopify://shop_images/author-5.png",
+            "quote": "“The other hand we denounce righteou tion men who are so beguiled and demo by the the moment.Dislike men who so elopment All good thanks. Delay with probably a knock-on from strikes...",
+            "star": 3
+          }
+        },
+        "testimonial_qG98cj": {
+          "type": "testimonial",
+          "settings": {
+            "name": "John Doe",
+            "designation": "CEO Company",
+            "testifier-img": "shopify://shop_images/author-5.png",
+            "quote": "“The other hand we denounce righteou tion men who are so beguiled and demo by the the moment.Dislike men who so elopment All good thanks. Delay with probably a knock-on from strikes...",
+            "star": 4
+          }
+        },
+        "testimonial_8pNMhj": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Brad Jones",
+            "designation": "CEO Company",
+            "testifier-img": "shopify://shop_images/author-5.png",
+            "quote": "“The other hand we denounce righteou tion men who are so beguiled and demo by the the moment.Dislike men who so elopment All good thanks. Delay with probably a knock-on from strikes...",
+            "star": 5
+          }
+        },
+        "testimonial_argwNn": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Devid Roko",
+            "designation": "CEO Company",
+            "testifier-img": "shopify://shop_images/author-5.png",
+            "quote": "“The other hand we denounce righteou tion men who are so beguiled and demo by the the moment.Dislike men who so elopment All good thanks. Delay with probably a knock-on from strikes...",
+            "star": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_CQzQF4",
+        "testimonial_qG98cj",
+        "testimonial_8pNMhj",
+        "testimonial_argwNn"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "featured_collection",
+    "home_banner_3UPWHT",
+    "feature_tnrnii",
+    "home_about_section_chtEWR",
+    "home_product_eeJAJC",
+    "testimonial_trVkhE"
+  ]
+}

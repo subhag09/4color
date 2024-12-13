@@ -1,0 +1,60 @@
+<!-- feature-area-start -->
+<div class="tp-feature-5__area tp-feature-5__space">
+  <div class="container custom-container-4">
+    <div class="tp-feature-5__border">
+      <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-1 row-cols-sm-2">
+        {% assign blocks = section.blocks | where: 'type', 'feature' %}
+        {% for block in blocks %}
+          <div class="col feature-card">
+            <div class="tp-feature-5__item-box d-flex align-items-center">
+              <div class="tp-feature-3__icon">
+                <span>
+                  <img src="{{ block.settings.feture-icon | img_url: 'master' }}">
+                </span>
+              </div>
+              <div class="tp-feature-3__text">
+                <h5>{{ block.settings['feature-heading'] }}</h5>
+                <span>{{ block.settings['feature-text'] }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- feature-area-end -->
+{% schema %}
+{
+  "name": "Feature Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name":"Fetures",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feture-icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "feature-heading",
+          "label": "Feature Heading"
+        },
+        {
+          "type": "text",
+          "id": "feature-text",
+          "label": "Feature Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Section"
+    }
+  ]
+}
+{% endschema %}

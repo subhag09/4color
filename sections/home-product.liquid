@@ -1,0 +1,198 @@
+<!-- banner-area-start -->
+<div class="tp-banner__area pb-90">
+  <div class="container custom-container-4">
+    <div class="row">
+      {% comment %}
+        {% assign blocks = section.blocks | where: 'type', 'product' %}
+        {% for block in blocks %}
+          {% assign selected_product = block.settings.product %}
+          <div
+            class="col-xl-{% if forloop.index == 1 or forloop.index == 4 %}7{% else %}5{% endif %} col-lg-6 col-md-12 mb-30 wow tpfadeUp"
+            data-wow-duration=".9s"
+            data-wow-delay=".3s"
+          >
+            <div
+              class="tp-banner__left-box fix p-relative"
+              data-background="{{ block.settings['product-image'] | img_url: 'master' }}"
+            >
+              <div class="tp-banner__content">
+                <h4 class="tp-banner__title">{{ selected_product.title }}</h4>
+                <span>Starting <strong>$15.00</strong></span>
+                <a
+                  class="tp-btn-white-sm"
+                  href="{{ selected_product.url }}"
+                  >Go Shop Now</a
+                >
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endcomment %}
+      {% assign selected_product_one = section.settings['product-one'] %}
+      {% assign selected_product_two = section.settings['product-two'] %}
+      {% assign selected_product_three = section.settings['product-three'] %}
+      {% assign selected_product_four = section.settings['product-four'] %}
+      <div
+        class="col-xl-7 col-lg-6 col-md-12 mb-30 wow tpfadeUp"
+        data-wow-duration=".9s"
+        data-wow-delay=".3s"
+      >
+        <div
+          class="tp-banner__left-box fix p-relative"
+          data-background="{{ section.settings['product-image-one'] | img_url: 'master' }}"
+        >
+          <div class="tp-banner__content">
+            <h4 class="tp-banner__title">{{ selected_product_one.title }}</h4>
+            <span
+              >Starting <strong>{{ selected_product_one.price_min | money_with_currency }}</strong></span
+            >
+            <a
+              class="tp-btn-white-sm"
+              href="{{ selected_product_one.url }}"
+              >Go Shop Now</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xl-5 col-lg-6 col-md-12 mb-30 wow tpfadeUp"
+        data-wow-duration=".9s"
+        data-wow-delay=".5s"
+      >
+        <div
+          class="tp-banner__right-box fix p-relative"
+          data-background="{{ section.settings['product-image-two'] | img_url: 'master' }}"
+        >
+          <div class="tp-banner__content color">
+            <h4 class="tp-banner__title-2 text-black">{{ selected_product_two.title }}</h4>
+            <span class="text-black"
+              >Starting <strong>{{ selected_product_two.price_min | money_with_currency }}</strong></span
+            >
+            <a
+              class="tp-btn-white-sm"
+              href="{{ selected_product_two.url }}"
+              >Go Shop Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="flex-direction: row-reverse;">
+      <div
+        class="col-xl-7 col-lg-6 col-md-12 mb-30 wow tpfadeUp"
+        data-wow-duration=".9s"
+        data-wow-delay=".3s"
+      >
+        <div
+          class="tp-banner__left-box fix p-relative"
+          data-background="{{ section.settings['product-image-four'] | img_url: 'master' }}"
+        >
+          <div class="tp-banner__content">
+            <h4 class="tp-banner__title">{{ selected_product_four.title }}</h4>
+            <span
+              >Starting <strong>{{ selected_product_four.price_min | money_with_currency }}</strong></span
+            >
+            <a
+              class="tp-btn-white-sm"
+              href="{{ selected_product_four.url }}"
+              >Go Shop Now</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xl-5 col-lg-6 col-md-12 mb-30 wow tpfadeUp"
+        data-wow-duration=".9s"
+        data-wow-delay=".5s"
+      >
+        <div
+          class="tp-banner__right-box fix p-relative"
+          data-background="{{ section.settings['product-image-three'] | img_url: 'master' }}"
+        >
+          <div class="tp-banner__content color">
+            <h4 class="tp-banner__title-2 text-black">{{ selected_product_three.title }}</h4>
+            <span class="text-black"
+              >Starting <strong>{{ selected_product_three.price_min | money_with_currency }}</strong></span
+            >
+            <a
+              class="tp-btn-white-sm"
+              href="{{ selected_product_three.url }}"
+              >Go Shop Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- banner-area-end -->
+{% schema %}
+{
+  "name": "Home Product Section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product-one",
+      "label": "Product One"
+    },
+    {
+      "type": "image_picker",
+      "id": "product-image-one",
+      "label": "Product Image One"
+    },
+    {
+      "type": "product",
+      "id": "product-two",
+      "label": "Product Two"
+    },
+    {
+      "type": "image_picker",
+      "id": "product-image-two",
+      "label": "Product Image Two"
+    },
+    {
+      "type": "product",
+      "id": "product-three",
+      "label": "Product Three"
+    },
+    {
+      "type": "image_picker",
+      "id": "product-image-three",
+      "label": "Product Image Three"
+    },
+    {
+      "type": "product",
+      "id": "product-four",
+      "label": "Product Four"
+    },
+    {
+      "type": "image_picker",
+      "id": "product-image-four",
+      "label": "Product Image Four"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "products",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product-image",
+          "label": "Product Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Product Section"
+    }
+  ]
+}
+{% endschema %}

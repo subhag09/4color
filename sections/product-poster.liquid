@@ -1,0 +1,124 @@
+<style>
+  .flag-discount {
+    border-radius: 6px 0 0 6px;
+    color: #fff;
+    display: block;
+    float: left;
+    padding: 10px 20px;
+    background: #ff8717;
+    font-size: 17px;
+    font-weight: 400;
+    position: relative;
+  }
+  .flag-discount::before,
+  .flag-discount::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    display: block;
+  }
+  .flag-discount::before {
+    top: 0;
+    border-width: 22px 15px 0 0;
+    border-color: #ff8717 transparent transparent transparent;
+  }
+  .flag-discount::after {
+    bottom: 0;
+    border-width: 0 15px 22px 0;
+    border-color: transparent transparent #ff8717 transparent;
+  }
+    .tp-shop-details__price {
+    width: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 13px;
+    height: 100%;
+  }
+</style>
+
+<div class="tp-product-details-area pt-130 pb-130 section-height">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__wrapper mb-0">
+          <div class="tp-shop-details__tab-content-box mb-20">
+            <div class="tab-content">
+              <div class="tp-shop-details__tab-big-img oneimg">
+                <img src="{{ product.images.first | img_url: 'master' }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__right-warp">
+          <h3 class="tp-shop-details__title-sm">{{ product.title }}</h3>
+          <div class="tp-shop-details__price">
+            <span>{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+            {% if customer %}
+              <div class="flag-discount">{{ section.settings['login-text'] }}</div>
+            {% else %}
+              <div class="flag-discount">{{ section.settings['not-login-text'] }}</div>
+            {% endif %}
+          </div>
+          <div class="tp-shop-details__text-2">
+            <p>{{ product.description }}</p>
+          </div>
+          <form
+            method="post"
+            action="/cart/add"
+            id="{{ 'product-form-' | append: section.id }}"
+            accept-charset="UTF-8"
+            class="form"
+            enctype="multipart/form-data"
+            novalidate="novalidate"
+            data-type="add-to-cart-form"
+          >
+            <div class="tp-shop-details__quantity-wrap mt-30 d-flex align-items-center">
+              <div class="tp-shop-details__quantity-box">
+                <div class="tp-shop-details__quantity">
+                  <div class="tp-cart-minus"><i class="fal fa-minus"></i></div>
+                  <input type="text" name="quantity" value="1">
+                  <div class="tp-cart-plus"><i class="fal fa-plus"></i></div>
+                </div>
+              </div>
+              <div class="tp-shop-details__btn mr-30 shopbtn">
+                <input
+                  style="display:none"
+                  type="file"
+                  form="{{ 'product-form-' | append: section.id }}"
+                  name="properties[Customize Image]"
+                >
+                <input name="id" value="{{ product.variants.first.id }}" type="hidden">
+                <input class="tp-btn-square" name="add" value="Add To Cart" type="submit">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "not-login-text",
+      "label": "Text For Not Registered Customer"
+    },
+    {
+      "type": "text",
+      "id": "login-text",
+      "label": "Text For Registered Customer"
+    }
+  ]
+}
+{% endschema %}

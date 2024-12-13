@@ -1,0 +1,29 @@
+.card--standard > .card__content .card__information {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+h3.card__heading.h5 {
+  font-size: 20px !important;
+  color: black !important;
+  font-weight: 500 !important;
+  margin-bottom: 2rem !important;
+}
+.card__inner {
+  height: 267px !important;
+}
+.card__inner img {
+  object-fit: cover;
+}
+.section-height {
+  /* height: 90vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tp-feature-5__item-box{
+  height:120px !important;
+}
+.tp-feature-5__border .row{
+      --bs-gutter-y: 20px !important;
+  justify-content:center;
+}

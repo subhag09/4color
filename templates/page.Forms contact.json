@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "forms": {
+      "type": "apps",
+      "settings": {}
+    },
+    "44e011e0-c08c-4cd8-9d76-5308456cf4e9": {
+      "type": "main-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "44e011e0-c08c-4cd8-9d76-5308456cf4e9",
+    "forms"
+  ]
+}

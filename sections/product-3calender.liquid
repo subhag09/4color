@@ -1,0 +1,287 @@
+{% capture contentForQueryString %}{{ content_for_header }}{% endcapture %}
+{% assign pageParams = contentForQueryString
+  | split: '"pageurl":"'
+  | last
+  | split: '"'
+  | first
+  | split: '.myshopify.com'
+  | last
+  | split: '?'
+  | last
+  | replace: '\/', '/'
+  | replace: '%20', ' '
+  | replace: '\u0026', '&'
+  | split: '&'
+%}
+{% for param in pageParams %}
+  {% if param contains 'variant=' %}
+    {% capture get-variant-id %}{{ param | split: '=' | last }}{% endcapture %}
+  {% endif %}
+{% endfor %}
+{% if get-variant-id %}
+  {% assign target_variant_id = get-variant-id | plus: 0 %}
+{% else %}
+  {% assign target_variant_id = product.variants[0].id | plus: 0 %}
+{% endif %}
+{% assign target_variant = product.variants | where: 'id', target_variant_id | first %}
+
+<!-- product-details-area-start -->
+<div class="tp-product-details-area pt-130 pb-130">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__wrapper mb-0">
+          <div class="tp-shop-details__tab-content-box mb-20">
+            <div class="tab-content" id="nav-tabContent">
+              {% for variant in product.variants %}
+                {%- if variant.id == target_variant_id and variant.metafields.custom.image != blank -%}
+                  {% for image in variant.metafields.custom.image.value %}
+                    <div
+                      class="tab-pane fade{% if forloop.index==1 %} show active{% endif %}"
+                      id="nav-{{ forloop.index }}"
+                      role="tabpanel"
+                      aria-labelledby="nav-{{ forloop.index }}-tab"
+                    >
+                      <div class="tp-shop-details__tab-big-img">
+                        <img src="{{ image | img_url: 'master' }}" alt="">
+                      </div>
+                    </div>
+                  {% endfor %}
+                {%- endif -%}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="tp-shop-details__tab-btn-box">
+            <nav>
+              <div class="nav nav-tab" id="nav-tab" role="tablist">
+                {% for variant in product.variants %}
+                  {%- if variant.id == target_variant_id and variant.metafields.custom.image != blank -%}
+                    {% for image in variant.metafields.custom.image.value %}
+                      <button
+                        class="nav-links{% if forloop.index==1 %} active{% endif %}"
+                        id="nav-{{ forloop.index }}-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-{{ forloop.index }}"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-{{ forloop.index }}"
+                        aria-selected="{% if forloop.index==1 %}true{% else %}false{% endif %}"
+                      >
+                        <img src="{{ image | img_url: 'master' }}" alt="">
+                      </button>
+                    {% endfor %}
+                  {%- endif -%}
+                {% endfor %}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="tp-shop-details__right-warp">
+          <h3 class="tp-shop-details__title-sm">{{ product.title }}</h3>
+          <div class="tp-shop-details__price">
+            <span>{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+          </div>
+          <div class="tp-shop-details__text-2">
+            <p>
+              {{ product.description }}
+            </p>
+          </div>
+          <div class="tp-shop-details__product-info">
+            <ul>
+              <li class="themelist">
+                <span>Select Theme:</span>
+                <div class="tp-shop-details__variation-listing">
+                  {% for variant in product.variants -%}
+                    {% if variant.option2 == target_variant.option2 %}
+                      <a data-variant-id="{{ variant.id }}">
+                        <label class="tp-color-variation-btn themeselect">
+                          <img
+                            src="{{ variant.featured_image.src | img_url: 'master' }}"
+                            alt="{{ variant.title }}"
+                            class="imgpro{% if variant.id == target_variant_id %} active{% endif %}"
+                          >
+                          <span
+                            {% if variant.id == target_variant_id %}
+                              class="span-active"
+                            {% endif %}
+                          >
+                            {{- variant.option1 -}}
+                          </span>
+                        </label>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </li>
+              <li class="themelist" style="align-items: self-start;">
+                <span>Your Custom Text: </span>
+                <div class="my" style="width: 100%;">
+                  <div class="tp-contact-4__textarea-box">
+                    <textarea
+                      placeholder="Enter your Massage*"
+                      maxlength="90"
+                      form="{{ 'product-form-' | append: section.id }}"
+                      name="properties[Customize Text]"
+                      style="
+                        height: max-content;
+                        line-height: 20px;
+                        padding-left: 5px;
+                        padding: 8px;
+                      "
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="tp-shop-details__quantity-wrap mt-30 d-flex align-items-center">
+            <div class="tp-shop-details__quantity-box">
+              <div class="tp-product__filter">
+                <div class="nice-select" tabindex="0">
+                  <span class="current">{{ target_variant.option2 }}</span>
+                  <ul class="list">
+                    {% for variant in product.variants %}
+                      {% if variant.option1 == target_variant.option1 %}
+                        <li
+                          class="option {% if variant.id == target_variant_id %}selected focus{% endif %}"
+                          data-variant-id="{{ variant.id }}"
+                        >
+                          {{- variant.option2 -}}
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="tp-shop-details__btn ml-30 shopbtn">
+              <form
+                method="post"
+                action="/cart/add"
+                id="{{ 'product-form-' | append: section.id }}"
+                accept-charset="UTF-8"
+                class="form"
+                enctype="multipart/form-data"
+                data-type="add-to-cart-form"
+              >
+                <input
+                  style="display:none"
+                  type="file"
+                  form="{{ 'product-form-' | append: section.id }}"
+                  name="properties[Customize Image]"
+                >
+                <input name="id" value="{{ target_variant_id }}" type="hidden">
+                <input class="tp-btn-square" name="add" value="Add To Cart" type="submit">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Function to update product details based on selected variant
+function updateProductDetails(variantId) {
+  // Update URL without reloading the page
+  const url = new URL(window.location);
+  url.searchParams.set('variant', variantId);
+  window.history.pushState({}, '', url);
+  
+  // Trigger AJAX update
+  updateProductDetailsViaAjax(variantId);
+}
+
+// Function to load content inside the target div via AJAX
+function updateProductDetailsViaAjax(variantId) {
+  fetch(`${window.location.pathname}?variant=${variantId}&partial=true`)
+    .then(response => response.text())
+    .then(data => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+      const newContent = doc.querySelector('.tp-product-details-area');
+      if (newContent) {
+        document.querySelector('.tp-product-details-area').innerHTML = newContent.innerHTML;
+        // Reinitialize event listeners after content update
+        initializeEventListeners();
+      }
+    })
+    .catch(error => console.error('Error fetching product details:', error));
+}
+
+// Function to initialize event listeners
+function initializeEventListeners() {
+  // Event delegation for theme selection
+  document.querySelector('.tp-shop-details__variation-listing').addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (link) {
+      event.preventDefault(); // Prevent default link behavior
+      const variantId = link.getAttribute('data-variant-id');
+      updateProductDetails(variantId);
+    }
+  });
+
+  // Event listener for dropdown change
+  document.querySelector('.nice-select').addEventListener('click', function(event) {
+    if (event.target.classList.contains('option')) {
+      const variantId = event.target.getAttribute('data-variant-id');
+      updateProductDetails(parseInt(variantId));
+    }
+  });
+}
+
+// Initialize with the default variant and set up event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const variantId = urlParams.get('variant') || '{{ target_variant_id }}';
+  updateProductDetails(variantId);
+  initializeEventListeners();
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var productTitle = "{{ product.title }}";
+
+    // Create a MutationObserver to detect when the input field is added to the DOM
+    const observer = new MutationObserver(function(mutationsList, observer) {
+      var inputField = document.getElementById('custom#product_title');
+      if (inputField) {
+        inputField.value = productTitle;
+        observer.disconnect(); // Stop observing once the element is found and updated
+      }
+    });
+
+    // Start observing changes in the entire body
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+</script>
+
+
+<div class="pxFormGenerator" id="oN_jNyAmjKoqHv3yjLpXGw"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var productTitle = "{{ product.title }}";
+    
+    var interval = setInterval(function() {
+      var inputField = document.getElementById('form_input_6');
+      if (inputField) {
+        inputField.value = productTitle;
+        clearInterval(interval); // Stop the interval once the input is found and updated
+      }
+    }, 1000); // Check every 500ms
+  });
+</script>
+<style>
+ .form-control{
+    display: none!important;
+  }
+</style>
+{% schema %}
+{
+  "name": "3 Calender Product",
+  "settings": []
+}
+{% endschema %}
